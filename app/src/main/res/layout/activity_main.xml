@@ -12,5 +12,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/randomStringTextView"
+        android:text="Hello World!"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wordInput"
+        android:layout_below="@+id/randomStringTextView"
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Word to List"
+        android:id="@+id/addWordButton"
+        android:layout_below="@+id/wordInput"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
