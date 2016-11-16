@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
     tools:context="com.epicodus.bogglesolitaire.MainActivity">
 
     <TextView
@@ -21,9 +19,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wordInput"
+        android:singleLine="true"
         android:layout_below="@+id/randomStringTextView"
-        android:layout_centerHorizontal="true"
-        android:singleLine="true"/>
+        android:layout_alignRight="@+id/addWordButton"
+        android:layout_alignEnd="@+id/addWordButton"
+        android:layout_alignLeft="@+id/addWordButton"
+        android:layout_alignStart="@+id/addWordButton"
+        android:background="#000000"
+        android:hint="Enter a Word"
+        android:textColorHint="#ffffff"
+        android:padding="5dp"
+        android:textColor="#ffffff"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -31,5 +37,12 @@
         android:text="Add Word to List"
         android:id="@+id/addWordButton"
         android:layout_below="@+id/wordInput"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wordListView"
+        android:layout_below="@+id/addWordButton"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
