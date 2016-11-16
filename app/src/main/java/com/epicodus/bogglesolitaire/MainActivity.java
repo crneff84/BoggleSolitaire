@@ -2,6 +2,7 @@ package com.epicodus.bogglesolitaire;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.addWordButton) Button mAddWordButton;
     @Bind(R.id.randomStringTextView) TextView mRandomStringTextView;
 
-
+    public static final String TAG = "logs";
 
 
 
@@ -38,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         Random rand = new Random();
         for (int i = 0; i < 6; i ++) {
-            int j = rand.nextInt(20) + 1;
+            int j = rand.nextInt(21);
             randomLetters.add(consonants[j]);
         }
 
         for (int i = 0; i < 2; i ++) {
-            int j = rand.nextInt(5) + 1;
+            int j = rand.nextInt(5);
             randomLetters.add(vowels[j]);
         }
 
@@ -54,9 +55,32 @@ public class MainActivity extends AppCompatActivity {
         mAddWordButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                words.add(mWordInput.getText().toString());
-                ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, words);
-                mListView.setAdapter(adapter);
+                boolean output = false;
+                Integer letterCount = 0;
+                String[] inputArray = mWordInput.getText().toString().split("");
+                if(inputArray.length <= 9) {
+                    for (int i=0; i < inputArray.length; i++){
+                        for(int j=0; j< randomLetters.size(); j++) {
+                           if (inputArray[i].equals(randomLetters.get(j))) {
+                               letterCount+= 1;
+                               break;
+                           }
+                        }
+                    }
+                    if(inputArray.length == letterCount +1) {
+                        output = true;
+                        Log.i(TAG, "true!" + letterCount.toString() + " Array: " + inputArray.length);
+                    } else {
+                        Log.i(TAG, "false!" + letterCount.toString() + " Array: " + inputArray.length);
+                    }
+                }
+                if (output) {
+                    words.add(mWordInput.getText().toString());
+                    ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, words);
+                    mListView.setAdapter(adapter);
+                }
+
+
             }
         });
 
